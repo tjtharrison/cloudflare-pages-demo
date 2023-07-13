@@ -1,0 +1,38 @@
+<head>
+    <title>Cloudflare Pages Demo</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.0/css/all.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+    <link rel='stylesheet' href='/static/styles.css' />
+</head>
+
+<div id="header_block">
+    <p class="deploy_message">This site has been generated and deployed from Github repository <a
+            href="https://github.com/tjtharrison/cloudflare-pages-demo" target="_blank">tjtharrison/cloudflare-pages-demo</a></p>
+    <div id="header_wrapper">
+
+
+        <p><img class="me" src="/static/profile.png" /></p>
+
+        <h2>Joe Bloggs</h2>
+        <h3>Something about Joe</h3>
+
+        <ul class="navigation">
+            <li><a href="/">Home</a></li>
+            <li><a target="_blank" href="https://www.linkedin.com/">LinkedIn</a></li>
+            <li><a target="_blank" href="https://www.credly.com/">Credly</a></li>
+            <li><a target="_blank" href="https://www.medium.com/">Medium</a></li>
+            <li><a target="_blank" href="/pages/example_page/">Example Page</a></li>
+        </ul>
+
+
+    </div>
+</div>
+
+<div id="body">
+    {{ BODY }}
+</div>
