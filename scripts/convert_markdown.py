@@ -131,6 +131,14 @@ def main():
             print("Failed to convert " + file_name)
             print(str(error_message))
 
+    # Copy static directory into docs
+    try:
+        print("Copying static directory")
+        os.system("cp -r static docs/")
+    except Exception as error_message:
+        print("Failed to copy static directory")
+        print(str(error_message))
+
 
 if __name__ == "__main__":
     main()
