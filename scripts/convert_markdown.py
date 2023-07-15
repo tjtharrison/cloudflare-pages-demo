@@ -1,4 +1,4 @@
-""" Script to generate HTML files from Markdown for publication """
+"""Script to generate HTML files from Markdown for publication."""
 import glob
 import os
 
@@ -10,6 +10,9 @@ TEMPLATE_FILE = "template.html"
 def get_files():
     """
     Get markdown files from the current directory.
+
+    Raises:
+        Exception: If unable to get markdown files.
 
     Returns:
             list: List of markdown files.
@@ -29,13 +32,19 @@ def create_directories(all_markdown_files):
     Process markdown files and create necessary subdirectories.
 
     Args:
-            all_markdown_files (list): List of markdown files.
+        all_markdown_files (list): List of markdown files.
+
+    Raises:
+        Exception: If unable to create directories.
 
     Returns:
          True if successful
     """
     try:
         print("Creating directories")
+        if not os.path.exists("docs"):
+            print("Making directory docs")
+            os.makedirs("docs")
         for file_name in all_markdown_files:
             if "/" in file_name:
                 directory = "docs/" + file_name.rsplit("/", 1)[0]
@@ -46,16 +55,20 @@ def create_directories(all_markdown_files):
         print("Failed to create directories")
         raise Exception from error_message
 
+    return True
 
 def convert_file(file_name):
     """
     Convert markdown file to HTML.
 
     Args:
-            file_name (str): Name of markdown file.
+        file_name (str): Name of markdown file.
+
+    Raises:
+        Exception: If unable to convert file.
 
     Returns:
-            True if successful
+        True if successful
     """
     try:
         print("Converting " + file_name + " to HTML")
@@ -66,7 +79,7 @@ def convert_file(file_name):
             destination_file = "docs/" + file_name.replace(".md", ".html")
 
         # Load Markdown content
-        with open(file_name, "r", encoding="UTF-8") as markdown_file:
+        with open(file_name, "r+", encoding="UTF-8") as markdown_file:
             text = markdown_file.read()
             html = markdown.markdown(
                 text,
@@ -101,13 +114,13 @@ def convert_file(file_name):
                 html_file.write(completed_template)
             print(destination_file + " written!")
     except Exception as error_message:
-        print("Failed to convert " + file_name)
+        print("Failed to convert " + file_name + " to HTML: " + str(error_message))
         raise Exception from error_message
 
+    return True
 
 def main():
-    """Main function"""
-
+    """Launch main function."""
     # Get a list of markdown files
     try:
         all_markdown_files = get_files()
